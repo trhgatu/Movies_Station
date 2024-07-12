@@ -1,0 +1,35 @@
+{
+  "name": "movies_station",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trhgatu/Movies_Station.git"
+  },
+  "keywords": [
+    "movies",
+    "web",
+    "xem",
+    "phim",
+    "nodejs"
+  ],
+  "author": "trhgatu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trhgatu/Movies_Station/issues"
+  },
+  "homepage": "https://github.com/trhgatu/Movies_Station#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
