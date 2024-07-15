@@ -1,0 +1,62 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --primary-color: #E50914;
+}
+
+* {
+    box-sizing: inherit;
+    /* Kế thừa thẻ chứa nó */
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid__fill-width {
+    width: 100%;
+}
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -12px;
+    margin-right: -12px;
+}
+.grid__column-12{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 100%;
+}
+.grid__column-2-4{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 16.6666667%;
+}
+.grid__column-10{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 83.3334%;
+}
+
+/* Animation */
+@keyframes headerSlideDown {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

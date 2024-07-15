@@ -1,3 +1,296 @@
-.test{
+.header{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
 
 }
+.header--scrolled{
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.4s linear;
+    backdrop-filter: blur(0.625em);
+    animation: headerSlideDown 0s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.header__navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.header__navbar-left{
+    display: flex;
+    align-items: center;
+}
+.header__navbar-right{
+    display: flex;
+    align-items: center;
+}
+
+.header__navbar-list{
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+}
+.header__navbar-item{
+    display: inline-block;
+}
+.header__navbar-item-link,
+.header__navbar-item-link-btn{
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.header__navbar-item {
+    margin: 0 12px;
+    position: relative;
+    min-height: 28px;
+}
+.header__navbar-item,
+.header__navbar-item-link,
+.header__navbar-item-link-icon{
+    display: inline-flex;
+    align-items: center;
+    color: var(--white-color);
+}
+.header__navbar-item .header__navbar-item-link--line::after {
+    content: " ";
+    height: 2px;
+    position: absolute;
+    background-color: var(--primary-color);
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s linear;
+    visibility: hidden;
+}
+
+.header__navbar-item .header__navbar-item-link--line:hover::after {
+    transform: scaleX(1);
+    visibility: visible;
+}
+
+.header__logo{
+    width: 200px;
+}
+.header__logo-img{
+    width: 170px;
+    height: auto;
+    fill: var(--white-color);
+}
+.header__logo-img path{
+    fill: var(--primary-color);
+}
+.header__navbar-item-link--btn-login{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: 1px solid var(--primary-color);
+}
+.header__navbar-item-link--btn-login:hover{
+    background-color: #C11119;
+    transition: 0.2s linear;
+}
+.header__navbar-item-link--btn-register{
+    color: var(--white-color);
+
+    border: 1px solid var(--white-color);
+
+}
+.header__navbar-item-link--btn-register:hover{
+    background-color: var(--white-color);
+    transition: 0.2s linear;
+    color: var(--black-color);
+}
+.header__navbar-item-link-btn{
+    padding: 8px;
+    border-radius: 2px;
+}
+
+.video-container {
+    position: relative;
+    padding-top: 70px;
+    height: 100vh;
+    overflow: hidden;
+}
+.video-container__play {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.video-container__play-video-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-container__play-background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.video-container__infor {
+    position: absolute;
+    top: 30%;
+    left: 90px;
+    z-index: 10;
+    width: 35%;
+}
+
+.video-container__infor-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.video-container__infor-desc {
+    font-size: 2.2rem;
+    line-height: 1.6;
+    font-weight: 500;
+    font-weight: bold;
+    color: var(--white-color);
+}
+
+.video-container__infor-action{
+    display: flex;
+}
+.video-container__infor-logo-img{
+    width: 200px;
+}
+.video-container__infor-action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.video-container__infor-action-btn-link{
+    font-size: 2rem;
+    text-transform: uppercase;
+    border:none;
+    border-radius: 3px;
+    height: 70px;
+    width: 200px;
+    font-weight: 500;
+}
+.video-container__infor-action-btn-link--play{
+    background-color:var(--primary-color);
+    color: var(--white-color);
+
+}
+.video-container__infor-action-btn-link--play:hover{
+    cursor: pointer;
+    background-color: #C11119;
+    transition: 0.2s linear;
+
+}
+.video-container__infor-action-btn-link--details{
+    background-color: transparent;
+    border: 2px solid;
+    border-color: var(--white-color);
+    color: var(--white-color);
+}
+.video-container__infor-action-btn-link--details:hover{
+    background-color: var(--white-color);
+    color: var(--black-color);
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+.video-container__infor-action-btn-link-icon{
+    font-size: 2rem;
+    margin-right: 10px;
+}
+/* .video-container__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 35%, rgba(0, 0, 0, 0) 70%);
+    z-index: 5;
+} */
+
+/* MOVIES */
+.movies__container{
+    background-color: var(--black-color);
+}
+
+.home-movies-item__img {
+    padding-top: 100%;
+    height: 267px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+}
+.movies__container-title{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+}
+.movies__container-title-text,
+.movies__container-title-see-all-link{
+    color: var(--white-color);
+}
+.movies__container-title-text{
+    font-size: 2rem;
+}
+.movies__container-title-see-all-link{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+
+
+.header__navbar-item-input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    position: absolute;
+    right: -4px;
+    font-size: 1.6rem;
+    padding: 9px 16px;
+    top: -4px;
+    border-radius: 30px;
+    width: 0;
+    opacity: 0;
+    transition: 0.2s linear;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white-color);
+}
+.header__navbar-item-input--slice {
+    width: 250px;
+    opacity: 1;
+}
+
+/* .header__navbar-item-search:hover .header__navbar-item-input{
+    width: 250px;
+    transition: 0.3s linear;
+    background-color: #fff;
+} */
+
+
+.header__navbar-item-btn-search-icon{
+    font-size: 1.7rem;
+    color: var(--primary-color);
+
+}
+.header__navbar-item-btn-search{
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+

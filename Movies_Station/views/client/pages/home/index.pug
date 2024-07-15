@@ -1,4 +1,91 @@
 extends ../../layouts/default.pug
 
 block main
-    h1 Trang chủ
+    .video-container
+      div(class="video-container__infor")
+        div(class="video-container__infor-logo")
+          img(
+            src="/img/logo_red.png"
+            class="video-container__infor-logo-img"
+            )
+        div(class="video-container__infor-desc")
+          p(class="video-container__infor-desc-text")
+            | Khi còn nhỏ, Uta cựu nhạc sĩ của băng hải tặc Tóc
+            |   Đỏ và là bạn thời thơ ấu của Monkey D. Luffy đã hứa rằng cô sẽ xây dựng một kỷ nguyên tự do
+            |   mới
+            |   bằng cách biểu diễn âm nhạc vui tươi cho thế giới.
+        div(class="video-container__infor-action")
+          div(class="video-container__infor-action-btn-link")
+            button(
+              class="video-container__infor-action-btn-link video-container__infor-action-btn-link--play"
+              )
+              i.fa-solid.fa-play(class="video-container__infor-action-btn-link-icon")
+              | Phát
+          div(class="video-container__infor-action-btn-link")
+            button(
+              class="video-container__infor-action-btn-link video-container__infor-action-btn-link--details"
+              )
+              i.fa-solid.fa-circle-info(class="video-container__infor-action-btn-link-icon")
+              | Chi
+              |   tiết
+      div(class="video-container__play")
+        section(class="video-container__play-video-section")
+          video(
+            loop=""
+            muted=""
+            autoplay=""
+            class="video-container__play-background-video"
+            )
+            source(
+              type="video/mp4"
+              src="/videos/One Piece Film Red - Official Trailer (2022) English Subtitles (1080p).mp4"
+              )
+    .movies__container
+      .grid
+        div(class="movies__container-title")
+          span(class="movies__container-title-text") Phim mới cập nhật
+          span(class="movies__container-title-see-all")
+            a(
+              class="movies__container-title-see-all-link"
+              href=""
+              ) Xem tất cả
+        div(class="grid__row movies__content")
+          div(class="grid__column-12")
+            .home-movies
+              div(class="grid__row")
+                div(class="grid__column-2-4")
+                  .home-movies-item
+                    div(
+                      style="background-image: url(https://phim.nguonc.com/public/images/Film/34.jpg);"
+                      class="home-movies-item__img"
+                      )
+                div(class="grid__column-2-4")
+                  .home-movies-item
+                    div(
+                      style="background-image: url(https://phim.nguonc.com/public/images/Film/143464.jpg);"
+                      class="home-movies-item__img"
+                      )
+                div(class="grid__column-2-4")
+                  .home-movies-item
+                    div(
+                      style="background-image: url(https://phim.nguonc.com/public/images/Film/143459.jpg);"
+                      class="home-movies-item__img"
+                      )
+                div(class="grid__column-2-4")
+                  .home-movies-item
+                    div(
+                      style="background-image: url(https://phim.nguonc.com/public/images/Film/141155.jpg);"
+                      class="home-movies-item__img"
+                      )
+                div(class="grid__column-2-4")
+                  .home-movies-item
+                    div(
+                      style="background-image: url(https://phim.nguonc.com/public/images/Film/144060.jpg);"
+                      class="home-movies-item__img"
+                      )
+                div(class="grid__column-2-4")
+                  .home-movies-item
+                    div(
+                      style="background-image: url(https://phim.nguonc.com/public/images/Film/om61eim8XwLfh6QXzh2r0Q4blBz.jpg);"
+                      class="home-movies-item__img"
+                      )
