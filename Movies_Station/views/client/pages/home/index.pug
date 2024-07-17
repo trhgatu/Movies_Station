@@ -2,90 +2,42 @@ extends ../../layouts/default.pug
 
 block main
     .video-container
-      div(class="video-container__infor")
-        div(class="video-container__infor-logo")
-          img(
-            src="/img/logo_red.png"
-            class="video-container__infor-logo-img"
-            )
-        div(class="video-container__infor-desc")
-          p(class="video-container__infor-desc-text")
-            | Khi còn nhỏ, Uta cựu nhạc sĩ của băng hải tặc Tóc
-            |   Đỏ và là bạn thời thơ ấu của Monkey D. Luffy đã hứa rằng cô sẽ xây dựng một kỷ nguyên tự do
-            |   mới
-            |   bằng cách biểu diễn âm nhạc vui tươi cho thế giới.
-        div(class="video-container__infor-action")
-          div(class="video-container__infor-action-btn-link")
-            button(
-              class="video-container__infor-action-btn-link video-container__infor-action-btn-link--play"
-              )
-              i.fa-solid.fa-play(class="video-container__infor-action-btn-link-icon")
-              | Phát
-          div(class="video-container__infor-action-btn-link")
-            button(
-              class="video-container__infor-action-btn-link video-container__infor-action-btn-link--details"
-              )
-              i.fa-solid.fa-circle-info(class="video-container__infor-action-btn-link-icon")
-              | Chi
-              |   tiết
-      div(class="video-container__play")
-        section(class="video-container__play-video-section")
-          video(
-            loop=""
-            muted=""
-            autoplay=""
-            class="video-container__play-background-video"
-            )
-            source(
-              type="video/mp4"
-              src="/videos/One Piece Film Red - Official Trailer (2022) English Subtitles (1080p).mp4"
-              )
+      .video-container__infor
+        .video-container__infor-logo
+          img.video-container__infor-logo-img(src='/img/logo_red.png')
+        .video-container__infor-desc
+          p.video-container__infor-desc-text
+            | Khi c&ograve;n nh&#x1ECF;, Uta c&#x1EF1;u nh&#x1EA1;c s&itilde; c&#x1EE7;a b&abreve;ng h&#x1EA3;i t&#x1EB7;c T&oacute;c
+            | &Dstrok;&#x1ECF; v&agrave; l&agrave; b&#x1EA1;n th&#x1EDD;i th&#x1A1; &#x1EA5;u c&#x1EE7;a Monkey D. Luffy &dstrok;&atilde; h&#x1EE9;a r&#x1EB1;ng c&ocirc; s&#x1EBD; x&acirc;y d&#x1EF1;ng m&#x1ED9;t k&#x1EF7; nguy&ecirc;n t&#x1EF1; do
+            | m&#x1EDB;i
+            | b&#x1EB1;ng c&aacute;ch bi&#x1EC3;u di&#x1EC5;n &acirc;m nh&#x1EA1;c vui t&#x1B0;&#x1A1;i cho th&#x1EBF; gi&#x1EDB;i.
+        .video-container__infor-action
+          .video-container__infor-action-btn-link
+            button.video-container__infor-action-btn-link.video-container__infor-action-btn-link--play
+              i.video-container__infor-action-btn-link-icon.fa-solid.fa-play
+              | Ph&aacute;t
+      .video-container__play
+        section.video-container__play-video-section
+          video.video-container__play-background-video(autoplay='' muted='' loop='')
+            source(src='/videos/One Piece Film Red - Official Trailer (2022) English Subtitles (1080p).mp4' type='video/mp4')
+
     .movies__container
       .grid
-        div(class="movies__container-title")
-          span(class="movies__container-title-text") Phim mới cập nhật
-          span(class="movies__container-title-see-all")
-            a(
-              class="movies__container-title-see-all-link"
-              href=""
-              ) Xem tất cả
-        div(class="grid__row movies__content")
-          div(class="grid__column-12")
+        .movies__container-section
+          .movies__container-title
+            span.movies__container-title-text Phim m&#x1EDB;i c&#x1EAD;p nh&#x1EAD;t
+            span.movies__container-title-see-all
+              a.movies__container-title-see-all-link(href='')
+                | Xem t&#x1EA5;t c&#x1EA3;
+        .grid__row.movies__content
+          .grid__column-12
             .home-movies
-              div(class="grid__row")
-                div(class="grid__column-2-4")
-                  .home-movies-item
-                    div(
-                      style="background-image: url(https://phim.nguonc.com/public/images/Film/34.jpg);"
-                      class="home-movies-item__img"
-                      )
-                div(class="grid__column-2-4")
-                  .home-movies-item
-                    div(
-                      style="background-image: url(https://phim.nguonc.com/public/images/Film/143464.jpg);"
-                      class="home-movies-item__img"
-                      )
-                div(class="grid__column-2-4")
-                  .home-movies-item
-                    div(
-                      style="background-image: url(https://phim.nguonc.com/public/images/Film/143459.jpg);"
-                      class="home-movies-item__img"
-                      )
-                div(class="grid__column-2-4")
-                  .home-movies-item
-                    div(
-                      style="background-image: url(https://phim.nguonc.com/public/images/Film/141155.jpg);"
-                      class="home-movies-item__img"
-                      )
-                div(class="grid__column-2-4")
-                  .home-movies-item
-                    div(
-                      style="background-image: url(https://phim.nguonc.com/public/images/Film/144060.jpg);"
-                      class="home-movies-item__img"
-                      )
-                div(class="grid__column-2-4")
-                  .home-movies-item
-                    div(
-                      style="background-image: url(https://phim.nguonc.com/public/images/Film/om61eim8XwLfh6QXzh2r0Q4blBz.jpg);"
-                      class="home-movies-item__img"
-                      )
+              .grid__row
+                each item in movies
+                  .grid__column-2-4
+                    .home-movies-item
+                      .home-movies-item-link(href='#')
+                        .home-movies-item__img(style=`background-image: url('${item.thumbnail}');`)
+                        .home-movies-item__play-button
+                          a.home-movies-item__play-button-link(href='#')
+                            i.home-movies-item__play-button-link-icon.fa-solid.fa-play
