@@ -1,0 +1,131 @@
+.sidebar(data-background-color='dark')
+  .sidebar-logo
+    .logo-header(data-background-color='dark')
+      a.logo(href='/admin/dashboard')
+        img.navbar-brand(src='assets/img/kaiadmin/logo_light.svg' alt='navbar brand' height='20')
+      .nav-toggle
+        button.btn.btn-toggle.toggle-sidebar
+          i.gg-menu-right
+        button.btn.btn-toggle.sidenav-toggler
+          i.gg-menu-left
+      button.topbar-toggler.more
+        i.gg-more-vertical-alt
+    // End Logo Header
+  .sidebar-wrapper.scrollbar.scrollbar-inner
+    .sidebar-content
+      ul.nav.nav-secondary
+        li.nav-item.active
+          a.collapsed(href=`${prefixAdmin}/dashboard`)
+            i.fas.fa-home
+            p Dashboard
+        li.nav-section
+          span.sidebar-mini-icon
+            i.fa.fa-ellipsis-h
+          h4.text-section Components
+        li.nav-item
+          a(href= `${prefixAdmin}/movies`)
+            i.fas.fa-layer-group
+            p Phim
+        li.nav-item
+          a(data-bs-toggle='collapse' href='#sidebarLayouts')
+            i.fas.fa-th-list
+            p Sidebar Layouts
+            span.caret
+          #sidebarLayouts.collapse
+            ul.nav.nav-collapse
+              li
+                a(href='sidebar-style-2.html')
+                  span.sub-item Sidebar Style 2
+              li
+                a(href='icon-menu.html')
+                  span.sub-item Icon Menu
+        li.nav-item
+          a(data-bs-toggle='collapse' href='#forms')
+            i.fas.fa-pen-square
+            p Forms
+            span.caret
+          #forms.collapse
+            ul.nav.nav-collapse
+              li
+                a(href='forms/forms.html')
+                  span.sub-item Basic Form
+        li.nav-item
+          a(data-bs-toggle='collapse' href='#tables')
+            i.fas.fa-table
+            p Tables
+            span.caret
+          #tables.collapse
+            ul.nav.nav-collapse
+              li
+                a(href='tables/tables.html')
+                  span.sub-item Basic Table
+              li
+                a(href='tables/datatables.html')
+                  span.sub-item Datatables
+        li.nav-item
+          a(data-bs-toggle='collapse' href='#maps')
+            i.fas.fa-map-marker-alt
+            p Maps
+            span.caret
+          #maps.collapse
+            ul.nav.nav-collapse
+              li
+                a(href='maps/googlemaps.html')
+                  span.sub-item Google Maps
+              li
+                a(href='maps/jsvectormap.html')
+                  span.sub-item Jsvectormap
+        li.nav-item
+          a(data-bs-toggle='collapse' href='#charts')
+            i.far.fa-chart-bar
+            p Charts
+            span.caret
+          #charts.collapse
+            ul.nav.nav-collapse
+              li
+                a(href='charts/charts.html')
+                  span.sub-item Chart Js
+              li
+                a(href='charts/sparkline.html')
+                  span.sub-item Sparkline
+        li.nav-item
+          a(href='widgets.html')
+            i.fas.fa-desktop
+            p Widgets
+            span.badge.badge-success 4
+        li.nav-item
+          a(href='../../documentation/index.html')
+            i.fas.fa-file
+            p Documentation
+            span.badge.badge-secondary 1
+        li.nav-item
+          a(data-bs-toggle='collapse' href='#submenu')
+            i.fas.fa-bars
+            p Menu Levels
+            span.caret
+          #submenu.collapse
+            ul.nav.nav-collapse
+              li
+                a(data-bs-toggle='collapse' href='#subnav1')
+                  span.sub-item Level 1
+                  span.caret
+                #subnav1.collapse
+                  ul.nav.nav-collapse.subnav
+                    li
+                      a(href='#')
+                        span.sub-item Level 2
+                    li
+                      a(href='#')
+                        span.sub-item Level 2
+              li
+                a(data-bs-toggle='collapse' href='#subnav2')
+                  span.sub-item Level 1
+                  span.caret
+                #subnav2.collapse
+                  ul.nav.nav-collapse.subnav
+                    li
+                      a(href='#')
+                        span.sub-item Level 2
+              li
+                a(href='#')
+                  span.sub-item Level 1
