@@ -1,4 +1,5 @@
 extends ../../layouts/default.pug
+include ../../mixins/filter-status.pug
 
 block main
     .page-inner
@@ -34,8 +35,9 @@ block main
                                     button#dropdownMenuButton.btn.btn-icon.btn-clean.me-0(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                                         i.fas.fa-ellipsis-h
                                     .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                                        each item in filterStatus
-                                            button.dropdown-item(class =`btn btn-sm btn-outline ${item.class}` button-status = item.status) #{item.name}
+                                        // Mixins
+                                        +filter-status(filterStatus)
+
 
 
                     .card-body
