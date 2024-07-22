@@ -1,0 +1,70 @@
+extends ../../layouts/default.pug
+
+block main
+    .page-inner
+        .page-header
+            h3.fw-bold.mb-3 Tables
+            ul.breadcrumbs.mb-3
+                li.nav-home
+                    a(href='#')
+                        i.icon-home
+                li.separator
+                    i.icon-arrow-right
+                li.nav-item
+                    a(href='#') Tables
+                li.separator
+                    i.icon-arrow-right
+                li.nav-item
+                    a(href='#') Basic Tables
+        .row
+            .col-md-12
+                .card
+                    .card-header
+                        .card-head-row.card-tools-still-right
+                            nav.navbar.navbar-header-left.navbar-expand-lg.navbar-form.nav-search.p-0.d-none.d-lg-flex
+                                form(id ="form-search")
+                                    .input-group
+                                        .input-group-prepend
+                                            button.btn.btn-search.pe-1(type='submit')
+                                                i.fa.fa-search.search-icon
+                                        input.form-control(type='text' placeholder='Search ...' name="keyword" value=keyword)
+                            .card-tools
+                                .dropdown
+                                    | Bộ lọc
+                                    button#dropdownMenuButton.btn.btn-icon.btn-clean.me-0(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                        i.fas.fa-ellipsis-h
+                                    .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                                        each item in filterStatus
+                                            button.dropdown-item(class =`btn btn-sm btn-outline ${item.class}` button-status = item.status) #{item.name}
+
+
+                    .card-body
+                        table.table.mt-3
+                            thead
+                                tr
+                                    th(scope='col') STT
+                                    th(scope='col') Hình ảnh
+                                    th(scope='col') Tiêu đề
+                                    th(scope='col') Mô tả
+                                    th(scope='col') Trạng thái
+                                    th(scope='col') Hành động
+                            tbody
+                                each item, index in movies
+                                    tr
+                                        td #{index+1}
+                                        td
+                                            <img src= "#{item.thumbnail}" style="width: 100px">
+                                        td #{item.title}
+                                        td #{item.description}
+
+                                        td
+                                            if(item.status == "active")
+                                                a(href="#" class="badge badge-success") Hoạt động
+                                            else
+                                                a(href="#" class="badge badge-danger") Dừng hoạt động
+                                        td
+                                            .form-button-action
+                                                button.btn.btn-link.btn-primary.btn-lg(type='button' data-bs-toggle='tooltip' title='' data-original-title='Edit Task')
+                                                    i.fa.fa-edit
+                                                button.btn.btn-link.btn-danger(type='button' data-bs-toggle='tooltip' title='' data-original-title='Remove')
+                                                    i.fa.fa-times

@@ -1,3 +1,4 @@
+/* [GET] / */
 const Movie = require("../../models/movie.model");
 
 module.exports.index = async (req, res) => {
