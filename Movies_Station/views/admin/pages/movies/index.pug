@@ -1,5 +1,6 @@
 extends ../../layouts/default.pug
 include ../../mixins/filter-status.pug
+include ../../mixins/search.pug
 
 block main
     .page-inner
@@ -23,19 +24,15 @@ block main
                     .card-header
                         .card-head-row.card-tools-still-right
                             nav.navbar.navbar-header-left.navbar-expand-lg.navbar-form.nav-search.p-0.d-none.d-lg-flex
-                                form(id ="form-search")
-                                    .input-group
-                                        .input-group-prepend
-                                            button.btn.btn-search.pe-1(type='submit')
-                                                i.fa.fa-search.search-icon
-                                        input.form-control(type='text' placeholder='Search ...' name="keyword" value=keyword)
+                                //Mixin search
+                                +search(keyword)
                             .card-tools
                                 .dropdown
                                     | Bộ lọc
                                     button#dropdownMenuButton.btn.btn-icon.btn-clean.me-0(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                                         i.fas.fa-ellipsis-h
                                     .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                                        // Mixins
+                                        // Mixins bộ lọc
                                         +filter-status(filterStatus)
 
 
