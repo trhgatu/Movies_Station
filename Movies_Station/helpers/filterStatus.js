@@ -24,6 +24,5 @@ module.exports = (query) =>{
         const index = filterStatus.findIndex(item => item.status == "");
         filterStatus[index].class = "active";
     }
-
     return filterStatus;
 }

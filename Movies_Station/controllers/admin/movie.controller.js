@@ -18,19 +18,38 @@ module.exports.index = async (req, res) => {
 
     const objectSearch = searchHelper(req.query);
 
-    console.log(objectSearch);
-
-
     if(objectSearch.regex){
         find.title = objectSearch.regex;
     }
 
-    const movies = await Movie.find(find);
+    //Pagination
+    let objectPagination = {
+        currentPage : 1,
+        limitItems : 6
+    };
+
+    if(req.query.page){
+        objectPagination.currentPage = parseInt(req.query.page);
+    }
+
+
+    const countMovies = await Movie.countDocuments(find);
+    const totalPage = Math.ceil(countMovies / objectPagination.limitItems);
+    objectPagination.totalPage = totalPage;
+
+    objectPagination.skip = (objectPagination.currentPage - 1) * objectPagination.limitItems;
+    //End pagination
+
+    const movies = await Movie.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
+
+
+
 
     res.render("admin/pages/movies/index", {
         pageTitle: "Danh sách phim",
         movies : movies,
         filterStatus: filterStatus,
-        keyword : objectSearch.keyword
+        keyword : objectSearch.keyword,
+        pagination : objectPagination
     });
 }

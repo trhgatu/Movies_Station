@@ -34,9 +34,24 @@ formSearch.addEventListener("submit", (e) => {
         url.searchParams.delete("keyword");
     }
     window.location.href = url.href;
-    console.log(keyword);
-
 });
 
-
 /* Form Search End */
+
+/* Pagination */
+const btnsPagination = document.querySelectorAll("[button-pagination]");
+if(btnsPagination){
+    let url = new URL(window.location.href);
+
+    btnsPagination.forEach(button => {
+        button.addEventListener("click", () => {
+            const page = button.getAttribute("button-pagination");
+            if(page){
+                url.searchParams.set("page", page);
+            }
+            window.location.href = url.href;
+        })
+
+    })
+}
+/* End Pagination */
