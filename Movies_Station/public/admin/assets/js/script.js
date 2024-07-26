@@ -55,3 +55,66 @@ if(btnsPagination){
     })
 }
 /* End Pagination */
+
+/* Checkbox multi */
+const checkBoxMulti = document.querySelector("[checkbox-multi]");
+if(checkBoxMulti){
+    const inputCheckAll = checkBoxMulti.querySelector("input[name ='checkall']");
+    const inputsIds = checkBoxMulti.querySelectorAll("input[name ='id']");
+
+    inputCheckAll.addEventListener("click", () =>{
+        if(inputCheckAll.checked){
+            inputsIds.forEach(input => {
+                input.checked = true;
+            });
+        }else{
+            inputsIds.forEach(input => {
+                input.checked = false;
+            });
+        }
+    });
+
+    inputsIds.forEach(input => {
+        input.addEventListener("click", () => {
+            const countChecked = checkBoxMulti.querySelectorAll("input[name = 'id']:checked").length; //Tìm đến ô input đã check
+            console.log(countChecked);
+            console.log(inputsIds.length);
+
+            if(countChecked == inputsIds.length){
+                inputCheckAll.checked = true;
+            }else{
+                inputCheckAll.checked = false;
+            }
+        });
+    });
+
+}
+/* End Checkbox multi */
+
+//Form Change Multiple
+const formChangeMulti = document.querySelector("[form-change-multi]");
+if(formChangeMulti){
+    formChangeMulti.addEventListener("submit", (e) =>{
+        e.preventDefault();
+
+        const checkBoxMulti = document.querySelector("[checkbox-multi]");
+        const inputsChecked = checkBoxMulti.querySelectorAll("input[name ='id']:checked");
+
+        if(inputsChecked.length > 0){
+            let ids = [];
+            const inputIds = formChangeMulti.querySelector("input[name='ids']");
+            inputsChecked.forEach(input => {
+                const id = input.value;
+                ids.push(id);
+            })
+            inputIds.value = ids.join(", ");
+
+            formChangeMulti.submit();
+
+        }else{
+            alert("vui lòng chọn ít nhất 1 bản ghi");
+        }
+    })
+
+}
+//End Form Change Multiple

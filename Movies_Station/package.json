@@ -25,6 +25,7 @@
   "homepage": "https://github.com/trhgatu/Movies_Station#readme",
   "description": "",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "method-override": "^3.0.0",
