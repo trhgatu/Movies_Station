@@ -23,7 +23,6 @@ module.exports.index = async (req, res) => {
     }
 
     //Pagination
-
     const countMovies = await Movie.countDocuments(find);
 
     let objectPagination = paginationHelper({
@@ -33,7 +32,6 @@ module.exports.index = async (req, res) => {
      req.query,
         countMovies
     );
-
     //End pagination
 
     const movies = await Movie.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
@@ -45,4 +43,13 @@ module.exports.index = async (req, res) => {
         keyword: objectSearch.keyword,
         pagination: objectPagination,
     })
-}
+};
+
+module.exports.changeStatus = async (req, res) => {
+    const status = req.params.status;
+    const id = req.params.id;
+
+    await Movie.updateOne({_id: id},{status: status});
+
+    res.redirect("back");
+};

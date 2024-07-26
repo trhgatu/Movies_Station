@@ -59,9 +59,18 @@ block main
 
                                         td
                                             if(item.status == "active")
-                                                a(href="#" class="badge badge-success") Hoạt động
+                                                button(
+                                                    class="badge badge-success"
+                                                    data-id =item.id
+                                                    data-status = item.status
+                                                    button-change-status) Hoạt động
                                             else
-                                                a(href="#" class="badge badge-danger") Dừng hoạt động
+                                                button(
+                                                    class="badge badge-danger"
+                                                    data-id = item.id
+                                                    data-status = item.status
+                                                    button-change-status
+                                                    ) Dừng hoạt động
                                         td
                                             .form-button-action
                                                 button.btn.btn-link.btn-primary.btn-lg(type='button' data-bs-toggle='tooltip' title='' data-original-title='Edit Task')
@@ -72,6 +81,16 @@ block main
 
                     //Pagination
                     +pagination(pagination)
+
+
+                    form(
+                        action=""
+                        method="POST"
+                        id="form-change-status"
+                        data-path=`${prefixAdmin}/movies/change-status`
+                    )
+                     script(src=`${prefixAdmin}/assets/js/movies.js`)
+
 
 
 
