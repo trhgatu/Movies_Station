@@ -28,6 +28,8 @@ block main
                             nav.navbar.navbar-header-left.navbar-expand-lg.navbar-form.nav-search.p-0.d-none.d-lg-flex
                                 //Mixin search
                                 +search(keyword)
+                            a(class="d-flex aligns-center" href=`${prefixAdmin}/movies/trash`)
+                                i.fa.fa-trash Thùng rác
                             .card-tools
                                 .dropdown
                                     | Bộ lọc
@@ -41,6 +43,7 @@ block main
 
                     .card-body
                         +form-change-multi(`${prefixAdmin}/movies/change-multi?_method=PATCH`)
+
                         table(
                             class="table mt-3"
                             checkbox-multi
@@ -53,7 +56,7 @@ block main
                                     th(scope='col') Hình ảnh
                                     th(scope='col') Tiêu đề
                                     th(scope='col') Mô tả
-                                    th(scope='col') Trạng thái
+                                    th(scope='col') T.Thái
                                     th(scope='col') Hành động
                             tbody
                                 each item, index in movies

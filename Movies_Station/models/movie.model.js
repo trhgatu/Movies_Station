@@ -5,7 +5,8 @@ const movieSchema = new mongoose.Schema({
     description: String,
     thumbnail: String,
     status: String,
-    deleted: Boolean
+    deleted: Boolean,
+    deletedAt: Date
 })
 const Movie = mongoose.model('Movie', movieSchema, 'movies')
 

@@ -72,6 +72,9 @@ module.exports.changeMulti = async (req, res) =>{
 /* [DELETE] /admin/movies/delete/:id */
 module.exports.deleteItem = async (req, res) =>{
     const id = req.params.id;
-    await Movie.deleteOne({_id: id});
+    await Movie.updateOne({_id: id},{
+        deleted: true,
+        deletedAt: new Date()
+    });
     res.redirect("back");
 };
