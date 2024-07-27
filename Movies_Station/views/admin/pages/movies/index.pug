@@ -7,7 +7,7 @@ include ../../mixins/form-change-multi.pug
 block main
     .page-inner
         .page-header
-            h3.fw-bold.mb-3 Tables
+            h3.fw-bold.mb-3 Danh sách phim
             ul.breadcrumbs.mb-3
                 li.nav-home
                     a(href='#')
@@ -88,7 +88,12 @@ block main
                                             .form-button-action
                                                 button.btn.btn-link.btn-primary.btn-lg(type='button' data-bs-toggle='tooltip' title='' data-original-title='Edit Task')
                                                     i.fa.fa-edit
-                                                button.btn.btn-link.btn-danger(type='button' data-bs-toggle='tooltip' title='' data-original-title='Remove')
+                                                button.btn.btn-link.btn-danger(
+                                                    type='button'
+                                                    data-bs-toggle='tooltip'
+                                                    data-id = item.id
+                                                    button-delete
+                                                    )
                                                     i.fa.fa-times
 
 
@@ -102,7 +107,14 @@ block main
                         id="form-change-status"
                         data-path=`${prefixAdmin}/movies/change-status`
                     )
-                     script(src=`${prefixAdmin}/assets/js/movies.js`)
+
+                    form(
+                        action=""
+                        method="POST"
+                        id="form-delete-item"
+                        data-path=`${prefixAdmin}/movies/delete`
+                    )
+                    script(src=`${prefixAdmin}/assets/js/movies.js`)
 
 
 
