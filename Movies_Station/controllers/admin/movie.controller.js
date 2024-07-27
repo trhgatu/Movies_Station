@@ -44,6 +44,7 @@ module.exports.index = async (req, res) => {
         pagination: objectPagination,
     })
 };
+
 /* [PATCH] /admin/movies/change-status/:status/:id */
 module.exports.changeStatus = async (req, res) => {
     const status = req.params.status;
@@ -76,5 +77,50 @@ module.exports.deleteItem = async (req, res) =>{
         deleted: true,
         deletedAt: new Date()
     });
+    res.redirect("back");
+};
+/* [GET] /admin/movies/trash */
+module.exports.trash = async (req, res) => {
+    const filterStatus = filterStatusHelper(req.query)
+
+    let find = {
+        deleted: true,
+    }
+    if (req.query.status) {
+        find.status = req.query.status
+    }
+
+    const objectSearch = searchHelper(req.query)
+
+    if (objectSearch.regex) {
+        find.title = objectSearch.regex
+    }
+
+    //Pagination
+    const countMovies = await Movie.countDocuments(find);
+
+    let objectPagination = paginationHelper({
+        currentPage: 1,
+        limitItems: 6,
+    },
+     req.query,
+        countMovies
+    );
+    //End pagination
+
+    const movies = await Movie.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
+
+    res.render('admin/pages/movies/trash', {
+        pageTitle: 'Thùng rác',
+        movies: movies,
+        filterStatus: filterStatus,
+        keyword: objectSearch.keyword,
+        pagination: objectPagination,
+    })
+};
+/* [DELETE] /admin/movies/trash/delete/:id */
+module.exports.forceDeleteItem = async (req, res) =>{
+    const id = req.params.id;
+    await Movie.deleteOne({_id: id});
     res.redirect("back");
 };

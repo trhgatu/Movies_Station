@@ -7,7 +7,7 @@ include ../../mixins/form-change-multi.pug
 block main
     .page-inner
         .page-header
-            h3.fw-bold.mb-3 Danh sách phim
+            h3.fw-bold.mb-3 Thùng rác
             ul.breadcrumbs.mb-3
                 li.nav-home
                     a(href='#')
@@ -28,8 +28,8 @@ block main
                             nav.navbar.navbar-header-left.navbar-expand-lg.navbar-form.nav-search.p-0.d-none.d-lg-flex
                                 //Mixin search
                                 +search(keyword)
-                            a(class="btn btn-primary d-flex" href=`${prefixAdmin}/movies/trash` style="margin-left: 20px")
-                                i.fa.fa-trash Thùng rác
+                            a(class="btn btn-primary d-flex" href=`${prefixAdmin}/movies` style="margin-left: 20px")
+                                i.fa.fa-trash Danh sách phim
                             .card-tools
                                 .dropdown
                                     | Bộ lọc
@@ -115,8 +115,9 @@ block main
                         action=""
                         method="POST"
                         id="form-delete-item"
-                        data-path=`${prefixAdmin}/movies/delete`
+                        data-path=`${prefixAdmin}/movies/trash/force-delete`
                     )
+
                     script(src=`${prefixAdmin}/assets/js/movies.js`)
 
 

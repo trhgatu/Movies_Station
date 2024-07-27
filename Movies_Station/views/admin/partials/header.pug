@@ -2,7 +2,7 @@
   .main-header-logo
     .logo-header(data-background-color='dark')
       a.logo(href='/admin/dashboard')
-        img.navbar-brand(src='/img/kaiadmin/logo_light.svg' alt='navbar brand' height='20')
+        img.navbar-brand(src=`${prefixAdmin}/img/kaiadmin/logo_light.svg` alt='navbar brand' height='20')
       .nav-toggle
         button.btn.btn-toggle.toggle-sidebar
           i.gg-menu-right
@@ -39,21 +39,21 @@
                 .notif-center
                   a(href='#')
                     .notif-img
-                      img(src='assets/img/jm_denis.jpg' alt='Img Profile')
+                      img(src=`${prefixAdmin}/assets/img/jm_denis.jpg` alt='Img Profile')
                     .notif-content
                       span.subject Jimmy Denis
                       span.block  How are you ?
                       span.time 5 minutes ago
                   a(href='#')
                     .notif-img
-                      img(src='assets/img/chadengle.jpg' alt='Img Profile')
+                      img(src=`${prefixAdmin}/assets/img/chadengle.jpg` alt='Img Profile')
                     .notif-content
                       span.subject Chad
                       span.block  Ok, Thanks !
                       span.time 12 minutes ago
                   a(href='#')
                     .notif-img
-                      img(src='assets/img/mlane.jpg' alt='Img Profile')
+                      img(src=`${prefixAdmin}/assets/img/mlane.jpg` alt='Img Profile')
                     .notif-content
                       span.subject Jhon Doe
                       span.block
@@ -61,7 +61,7 @@
                       span.time 12 minutes ago
                   a(href='#')
                     .notif-img
-                      img(src='assets/img/talha.jpg' alt='Img Profile')
+                      img(src=`${prefixAdmin}/assets/img/talha.jpg` alt='Img Profile')
                     .notif-content
                       span.subject Talha
                       span.block  Hi, Apa Kabar ?
@@ -96,7 +96,7 @@
                       span.time 12 minutes ago
                   a(href='#')
                     .notif-img
-                      img(src='assets/img/profile2.jpg' alt='Img Profile')
+                      img(src=`${prefixAdmin}/assets/img/profile2.jpg` alt='Img Profile')
                     .notif-content
                       span.block
                         | Reza send messages to you
@@ -154,7 +154,7 @@
         li.nav-item.topbar-user.dropdown.hidden-caret
           a.dropdown-toggle.profile-pic(data-bs-toggle='dropdown' href='#' aria-expanded='false')
             .avatar-sm
-              img.avatar-img.rounded-circle(src='assets/img/profile.jpg' alt='...')
+              img.avatar-img.rounded-circle(src=`${prefixAdmin}/assets/img/profile.jpg` alt='...')
             span.profile-username
               span.op-7 Hi,
               span.fw-bold Hizrian
@@ -163,7 +163,7 @@
               li
                 .user-box
                   .avatar-lg
-                    img.avatar-img.rounded(src='assets/img/profile.jpg' alt='image profile')
+                    img.avatar-img.rounded(src=`${prefixAdmin}/assets/img/profile.jpg` alt='image profile')
                   .u-text
                     h4 Hizrian
                     p.text-muted hello@example.com
