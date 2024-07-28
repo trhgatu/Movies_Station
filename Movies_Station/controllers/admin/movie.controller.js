@@ -34,7 +34,10 @@ module.exports.index = async (req, res) => {
     );
     //End pagination
 
-    const movies = await Movie.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
+    const movies = await Movie.find(find)
+    .sort({position : "descending"})
+    .limit(objectPagination.limitItems)
+    .skip(objectPagination.skip);
 
     res.render('admin/pages/movies/index', {
         pageTitle: 'Danh sách phim',
@@ -64,6 +67,25 @@ module.exports.changeMulti = async (req, res) =>{
             break;
         case "inactive":
             await Movie.updateMany({_id: {$in: ids}}, {status: "inactive"});
+            break;
+        case "delete-all":
+            await Movie.updateMany(
+                {
+                    _id : {$in: ids}
+                },
+                {
+                    deleted: true,
+                    deletedAt: new Date()
+                }
+            );
+            break;
+        case "change-position":
+            for (const item of ids) {
+                let [id, position ] = item.split("-");
+                position = parseInt(position);
+                await Movie.updateOne({_id: id}, {position: position});
+
+            }
             break;
         default:
             break;

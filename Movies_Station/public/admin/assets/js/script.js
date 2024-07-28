@@ -77,8 +77,6 @@ if(checkBoxMulti){
     inputsIds.forEach(input => {
         input.addEventListener("click", () => {
             const countChecked = checkBoxMulti.querySelectorAll("input[name = 'id']:checked").length; //Tìm đến ô input đã check
-            console.log(countChecked);
-            console.log(inputsIds.length);
 
             if(countChecked == inputsIds.length){
                 inputCheckAll.checked = true;
@@ -100,13 +98,27 @@ if(formChangeMulti){
         const checkBoxMulti = document.querySelector("[checkbox-multi]");
         const inputsChecked = checkBoxMulti.querySelectorAll("input[name ='id']:checked");
 
+        const typeChange = e.target.elements.type.value;
+        if(typeChange == "delete-all"){
+            const isConfirm = confirm("Bạn có chắc muốn xóa những bộ phim này?");
+
+            if(!isConfirm){
+                return;
+            }
+        }
+
         if(inputsChecked.length > 0){
             let ids = [];
             const inputIds = formChangeMulti.querySelector("input[name='ids']");
             inputsChecked.forEach(input => {
                 const id = input.value;
-                ids.push(id);
-            })
+                if(typeChange == "change-position"){
+                    const position = input.closest("tr").querySelector("input[name = 'position']").value;
+                    ids.push(`${id}-${position}`);
+                }else{
+                    ids.push(id);
+                }
+            });
             inputIds.value = ids.join(", ");
 
             formChangeMulti.submit();

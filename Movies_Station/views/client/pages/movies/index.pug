@@ -2,20 +2,23 @@ extends ../../layouts/default.pug
 
 block main
     .movies__container
-        .grid
-          .movies__container-section
-            .movies__container-title
-              span.movies__container-title-text Phim m&#x1EDB;i c&#x1EAD;p nh&#x1EAD;t
-              span.movies__container-title-see-all
-                a.movies__container-title-see-all-link(href='')
-                  | Xem t&#x1EA5;t c&#x1EA3;
-          .grid__row.movies__content
-            .grid__column-12
-              .home-movies
-                .grid__row
-                  each item in movies
-                    .grid__column-2-4
-                      .home-movies-item
-                        a.home-movies-item-link(href='#')
-                          .home-movies-item__img(style=`background-image: url('${item.thumbnail}');`)
+      .grid
+        .movies__container-section
+          .movies__container-title
+            span.movies__container-title-text Phim m&#x1EDB;i c&#x1EAD;p nh&#x1EAD;t
+            span.movies__container-title-see-all
+              a.movies__container-title-see-all-link(href='')
+                | Xem t&#x1EA5;t c&#x1EA3;
+        .grid__row.movies__content
+          .grid__column-12
+            .home-movies
+              .grid__row
+                each item in movies
+                  .grid__column-2-4
+                    .home-movies-item
+                      .home-movies-item-link(href='#')
+                        .home-movies-item__img(style=`background-image: url('${item.thumbnail}');`)
+                        .home-movies-item__play-button
+                          a.home-movies-item__play-button-link(href='#')
+                            i.home-movies-item__play-button-link-icon.fa-solid.fa-play
 
