@@ -54,6 +54,8 @@ module.exports.changeStatus = async (req, res) => {
     const id = req.params.id;
 
     await Movie.updateOne({_id: id},{status: status});
+
+    req.flash("success", "Cập nhật trạng thái thành công!");
     res.redirect("back");
 };
 /* [PATCH] /admin/movies/change-multi */
@@ -64,9 +66,11 @@ module.exports.changeMulti = async (req, res) =>{
     switch (type){
         case "active":
             await Movie.updateMany({_id: {$in: ids}}, {status: "active"});
+            req.flash("success", `Cập nhật trạng thái của ${ids.length} phim thành công!`);
             break;
         case "inactive":
             await Movie.updateMany({_id: {$in: ids}}, {status: "inactive"});
+            req.flash("success", `Cập nhật trạng thái của ${ids.length} phim thành công!`);
             break;
         case "delete-all":
             await Movie.updateMany(
