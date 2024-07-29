@@ -47,15 +47,18 @@ block main
                                             name="description"
                                             rows="5"
                                         )
-                                    div(class="form-group")
+                                    div(class="form-group" upload-image)
                                         label(for='thumbnail') Ảnh
+                                        .br
                                         input(
                                             type="file"
                                             class="form-control-file"
                                             id="thumbnail"
                                             name="thumbnail"
                                             accept="image/*"
+                                            upload-image-input
                                         )
+                                        img(src=" " upload-image-preview)
 
                                     div(class="form-group")
                                         label(for='position') Vị trí

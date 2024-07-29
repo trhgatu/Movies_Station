@@ -18,6 +18,28 @@ if (buttonStatus.length > 0) {
 }
 /* Button Status End*/
 
+
+//Upload Image
+const uploadImage = document.querySelector("[upload-image]");
+if (uploadImage) {
+    const uploadImageInput = document.querySelector("[upload-image-input]");
+    const uploadImagePreview = document.querySelector("[upload-image-preview]");
+
+    uploadImagePreview.classList.add('hidden');
+
+    uploadImageInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            uploadImagePreview.src = URL.createObjectURL(file);
+            uploadImagePreview.classList.remove('hidden');
+        } else {
+            uploadImagePreview.classList.add('hidden');
+        }
+    });
+}
+
+//End Upload Image
+
 /* Form Search */
 
 const formSearch = document.querySelector('#form-search')
@@ -146,3 +168,4 @@ if(showAlert){
     });
 }
 //End show alert
+
