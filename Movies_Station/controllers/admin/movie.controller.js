@@ -82,14 +82,15 @@ module.exports.changeMulti = async (req, res) =>{
                     deletedAt: new Date()
                 }
             );
+            req.flash("success", `Xóa ${ids.length} phim thành công!`);
             break;
         case "change-position":
             for (const item of ids) {
                 let [id, position ] = item.split("-");
                 position = parseInt(position);
                 await Movie.updateOne({_id: id}, {position: position});
-
             }
+            req.flash("success", `Thay đổi vị trí của ${ids.length} phim thành công!`);
             break;
         default:
             break;
@@ -103,6 +104,7 @@ module.exports.deleteItem = async (req, res) =>{
         deleted: true,
         deletedAt: new Date()
     });
+    req.flash("success", `Xóa phim thành công!`);
     res.redirect("back");
 };
 /* [GET] /admin/movies/trash */
