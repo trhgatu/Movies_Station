@@ -169,6 +169,7 @@ module.exports.createPost = async (req, res) =>{
     }else{
         req.body.position = parseInt(req.body.position);
     }
+    req.body.thumbnail = `/uploads/${req.file.filename}`;
     const movie = new Movie(req.body);
     await movie.save();
 
