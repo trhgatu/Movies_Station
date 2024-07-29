@@ -1,5 +1,7 @@
 const Movie = require('../../models/movie.model')
 
+const systemConfig = require("../../config/system");
+
 const filterStatusHelper = require('../../helpers/filterStatus')
 const searchHelper = require('../../helpers/search')
 const paginationHelper = require('../../helpers/pagination')
@@ -151,4 +153,24 @@ module.exports.forceDeleteItem = async (req, res) =>{
     const id = req.params.id;
     await Movie.deleteOne({_id: id});
     res.redirect("back");
+};
+
+/* [GET] /admin/movies/create */
+module.exports.create = async (req, res) =>{
+    res.render('admin/pages/movies/create', {
+        pageTitle: 'Thêm mới sản phẩm',
+    })
+};
+/* [POST] /admin/movies/create */
+module.exports.createPost = async (req, res) =>{
+    if(req.body.position == ""){
+        const countMovies = await Movie.countDocuments();
+        req.body.position = countMovies + 1;
+    }else{
+        req.body.position = parseInt(req.body.position);
+    }
+    const movie = new Movie(req.body);
+    await movie.save();
+
+    res.redirect(`${systemConfig.prefixAdmin}/movies`);
 };

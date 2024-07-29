@@ -30,7 +30,7 @@ block main
                             nav.navbar.navbar-header-left.navbar-expand-lg.navbar-form.nav-search.p-0.d-none.d-lg-flex
                                 //Mixin search
                                 +search(keyword)
-                            a(class="btn btn-primary d-flex" href=`${prefixAdmin}/movies/trash` style="margin-left: 20px")
+                            a(class="btn btn-outline-success d-flex" href=`${prefixAdmin}/movies/trash` style="margin-left: 20px")
                                 i.fa.fa-trash Thùng rác
                             .card-tools
                                 .dropdown
@@ -44,7 +44,14 @@ block main
 
 
                     .card-body
-                        +form-change-multi(`${prefixAdmin}/movies/change-multi?_method=PATCH`)
+                        .row.align-items-center
+                            .col-10
+                                 +form-change-multi(`${prefixAdmin}/movies/change-multi?_method=PATCH`)
+                            .col-2
+                                a(
+                                    href=`${prefixAdmin}/movies/create`
+                                    class="btn btn-outline-success"
+                                ) + Thêm mới
 
                         table(
                             class="table mt-3"
