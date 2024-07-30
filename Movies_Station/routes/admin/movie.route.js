@@ -5,6 +5,7 @@ const storageMulter = require("../../helpers/storageMulter");
 const upload = multer({ storage: storageMulter() });
 
 const controller = require('../../controllers/admin/movie.controller');
+const validate = require('../../validates/admin/movies.validate');
 
 router.get('/', controller.index);
 
@@ -20,6 +21,10 @@ router.delete('/trash/force-delete/:id', controller.forceDeleteItem);
 
 router.get('/create', controller.create);
 
-router.post('/create', upload.single('thumbnail'), controller.createPost);
+router.post('/create',
+    upload.single('thumbnail'),
+    validate.createPost,
+    controller.createPost
+);
 
 module.exports = router;

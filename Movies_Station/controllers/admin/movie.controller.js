@@ -163,13 +163,22 @@ module.exports.create = async (req, res) =>{
 };
 /* [POST] /admin/movies/create */
 module.exports.createPost = async (req, res) =>{
+    if(!req.body.title){
+        req.flash("error", "Vui lòng nhập tiêu đề!");
+        res.redirect("back");
+        return;
+    }
     if(req.body.position == ""){
         const countMovies = await Movie.countDocuments();
         req.body.position = countMovies + 1;
     }else{
         req.body.position = parseInt(req.body.position);
     }
-    req.body.thumbnail = `/uploads/${req.file.filename}`;
+
+    if(req.file){
+        req.body.thumbnail = `/uploads/${req.file.filename}`;
+    }
+
     const movie = new Movie(req.body);
     await movie.save();
 

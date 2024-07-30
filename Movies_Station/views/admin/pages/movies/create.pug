@@ -1,6 +1,8 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 
 block main
+    +alert-error(5000)
     .page-inner
         .page-header
             h3.fw-bold.mb-3 Forms
