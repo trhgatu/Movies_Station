@@ -1,6 +1,6 @@
 const Movie = require('../../models/movie.model')
 
-const systemConfig = require("../../config/system");
+const systemConfig = require('../../config/system')
 
 const filterStatusHelper = require('../../helpers/filterStatus')
 const searchHelper = require('../../helpers/search')
@@ -25,21 +25,22 @@ module.exports.index = async (req, res) => {
     }
 
     //Pagination
-    const countMovies = await Movie.countDocuments(find);
+    const countMovies = await Movie.countDocuments(find)
 
-    let objectPagination = paginationHelper({
-        currentPage: 1,
-        limitItems: 6,
-    },
-     req.query,
+    let objectPagination = paginationHelper(
+        {
+            currentPage: 1,
+            limitItems: 6,
+        },
+        req.query,
         countMovies
-    );
+    )
     //End pagination
 
     const movies = await Movie.find(find)
-    .sort({position : "descending"})
-    .limit(objectPagination.limitItems)
-    .skip(objectPagination.skip);
+        .sort({position: 'descending'})
+        .limit(objectPagination.limitItems)
+        .skip(objectPagination.skip)
 
     res.render('admin/pages/movies/index', {
         pageTitle: 'Danh sách phim',
@@ -48,67 +49,79 @@ module.exports.index = async (req, res) => {
         keyword: objectSearch.keyword,
         pagination: objectPagination,
     })
-};
+}
 
 /* [PATCH] /admin/movies/change-status/:status/:id */
 module.exports.changeStatus = async (req, res) => {
-    const status = req.params.status;
-    const id = req.params.id;
+    const status = req.params.status
+    const id = req.params.id
 
-    await Movie.updateOne({_id: id},{status: status});
+    await Movie.updateOne({_id: id}, {status: status})
 
-    req.flash("success", "Cập nhật trạng thái thành công!");
-    res.redirect("back");
-};
+    req.flash('success', 'Cập nhật trạng thái thành công!')
+    res.redirect('back')
+}
 /* [PATCH] /admin/movies/change-multi */
-module.exports.changeMulti = async (req, res) =>{
-    const type = req.body.type;
-    const ids = req.body.ids.split(", ");
+module.exports.changeMulti = async (req, res) => {
+    const type = req.body.type
+    const ids = req.body.ids.split(', ')
 
-    switch (type){
-        case "active":
-            await Movie.updateMany({_id: {$in: ids}}, {status: "active"});
-            req.flash("success", `Cập nhật trạng thái của ${ids.length} phim thành công!`);
-            break;
-        case "inactive":
-            await Movie.updateMany({_id: {$in: ids}}, {status: "inactive"});
-            req.flash("success", `Cập nhật trạng thái của ${ids.length} phim thành công!`);
-            break;
-        case "delete-all":
+    switch (type) {
+        case 'active':
+            await Movie.updateMany({_id: {$in: ids}}, {status: 'active'})
+            req.flash(
+                'success',
+                `Cập nhật trạng thái của ${ids.length} phim thành công!`
+            )
+            break
+        case 'inactive':
+            await Movie.updateMany({_id: {$in: ids}}, {status: 'inactive'})
+            req.flash(
+                'success',
+                `Cập nhật trạng thái của ${ids.length} phim thành công!`
+            )
+            break
+        case 'delete-all':
             await Movie.updateMany(
                 {
-                    _id : {$in: ids}
+                    _id: {$in: ids},
                 },
                 {
                     deleted: true,
-                    deletedAt: new Date()
+                    deletedAt: new Date(),
                 }
-            );
-            req.flash("success", `Xóa ${ids.length} phim thành công!`);
-            break;
-        case "change-position":
+            )
+            req.flash('success', `Xóa ${ids.length} phim thành công!`)
+            break
+        case 'change-position':
             for (const item of ids) {
-                let [id, position ] = item.split("-");
-                position = parseInt(position);
-                await Movie.updateOne({_id: id}, {position: position});
+                let [id, position] = item.split('-')
+                position = parseInt(position)
+                await Movie.updateOne({_id: id}, {position: position})
             }
-            req.flash("success", `Thay đổi vị trí của ${ids.length} phim thành công!`);
-            break;
+            req.flash(
+                'success',
+                `Thay đổi vị trí của ${ids.length} phim thành công!`
+            )
+            break
         default:
-            break;
+            break
     }
-    res.redirect("back");
-};
+    res.redirect('back')
+}
 /* [DELETE] /admin/movies/delete/:id */
-module.exports.deleteItem = async (req, res) =>{
-    const id = req.params.id;
-    await Movie.updateOne({_id: id},{
-        deleted: true,
-        deletedAt: new Date()
-    });
-    req.flash("success", `Xóa phim thành công!`);
-    res.redirect("back");
-};
+module.exports.deleteItem = async (req, res) => {
+    const id = req.params.id
+    await Movie.updateOne(
+        {_id: id},
+        {
+            deleted: true,
+            deletedAt: new Date(),
+        }
+    )
+    req.flash('success', `Xóa phim thành công!`)
+    res.redirect('back')
+}
 /* [GET] /admin/movies/trash */
 module.exports.trash = async (req, res) => {
     const filterStatus = filterStatusHelper(req.query)
@@ -127,18 +140,21 @@ module.exports.trash = async (req, res) => {
     }
 
     //Pagination
-    const countMovies = await Movie.countDocuments(find);
+    const countMovies = await Movie.countDocuments(find)
 
-    let objectPagination = paginationHelper({
-        currentPage: 1,
-        limitItems: 6,
-    },
-     req.query,
+    let objectPagination = paginationHelper(
+        {
+            currentPage: 1,
+            limitItems: 6,
+        },
+        req.query,
         countMovies
-    );
+    )
     //End pagination
 
-    const movies = await Movie.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
+    const movies = await Movie.find(find)
+        .limit(objectPagination.limitItems)
+        .skip(objectPagination.skip)
 
     res.render('admin/pages/movies/trash', {
         pageTitle: 'Thùng rác',
@@ -147,40 +163,76 @@ module.exports.trash = async (req, res) => {
         keyword: objectSearch.keyword,
         pagination: objectPagination,
     })
-};
+}
 /* [DELETE] /admin/movies/trash/delete/:id */
-module.exports.forceDeleteItem = async (req, res) =>{
-    const id = req.params.id;
-    await Movie.deleteOne({_id: id});
-    res.redirect("back");
-};
+module.exports.forceDeleteItem = async (req, res) => {
+    const id = req.params.id
+    await Movie.deleteOne({_id: id})
+    res.redirect('back')
+}
 
 /* [GET] /admin/movies/create */
-module.exports.create = async (req, res) =>{
+module.exports.create = async (req, res) => {
     res.render('admin/pages/movies/create', {
         pageTitle: 'Thêm mới sản phẩm',
     })
-};
+}
 /* [POST] /admin/movies/create */
-module.exports.createPost = async (req, res) =>{
-    if(!req.body.title){
-        req.flash("error", "Vui lòng nhập tiêu đề!");
-        res.redirect("back");
-        return;
-    }
-    if(req.body.position == ""){
-        const countMovies = await Movie.countDocuments();
-        req.body.position = countMovies + 1;
-    }else{
-        req.body.position = parseInt(req.body.position);
+module.exports.createPost = async (req, res) => {
+    if (req.body.position == '') {
+        const countMovies = await Movie.countDocuments()
+        req.body.position = countMovies + 1
+    } else {
+        req.body.position = parseInt(req.body.position)
     }
 
-    if(req.file){
-        req.body.thumbnail = `/uploads/${req.file.filename}`;
+    if (req.file) {
+        req.body.thumbnail = `/uploads/${req.file.filename}`
     }
 
-    const movie = new Movie(req.body);
-    await movie.save();
+    const movie = new Movie(req.body)
+    await movie.save()
 
-    res.redirect(`${systemConfig.prefixAdmin}/movies`);
-};
+    res.redirect(`${systemConfig.prefixAdmin}/movies`)
+}
+
+/* [GET] /admin/movies/edit */
+module.exports.edit = async (req, res) => {
+    try {
+        const find = {
+            deleted: false,
+            _id: req.params.id,
+        }
+
+        const movie = await Movie.findOne(find)
+
+        res.render('admin/pages/movies/edit', {
+            pageTitle: 'Sửa phim',
+            movie: movie,
+        })
+    } catch (error) {
+        res.redirect(`${systemConfig.prefixAdmin}/movies`)
+    }
+}
+
+module.exports.editPatch = async (req, res) => {
+    const id = req.params.id
+    req.body.position = parseInt(req.body.position)
+
+    if (req.file) {
+        req.body.thumbnail = `/uploads/${req.file.filename}`
+    }
+
+    try {
+        await Movie.updateOne(
+            {
+                _id: id,
+            },
+            req.body
+        )
+        req.flash("success", `Cập nhật thành công!`);
+    } catch (error) {
+        req.flash("error", `Cập nhật thất bại!`);
+    }
+    res.redirect('back')
+}

@@ -108,9 +108,15 @@ block main
                                             )
                                         td
                                             .form-button-action
-                                                button.btn.btn-link.btn-primary.btn-lg(type='button' data-bs-toggle='tooltip' title='' data-original-title='Edit Task')
+                                                a.btn.btn-link.btn-primary.btn-lg(
+                                                    type='button'
+                                                    href=`${prefixAdmin}/movies/edit/${item.id}`
+                                                    data-bs-toggle='tooltip'
+                                                    title=''
+                                                    data-original-title='Edit Task')
                                                     i.fa.fa-edit
-                                                button.btn.btn-link.btn-danger(
+                                                a.btn.btn-link.btn-danger(
+
                                                     type='button'
                                                     data-bs-toggle='tooltip'
                                                     data-id = item.id
