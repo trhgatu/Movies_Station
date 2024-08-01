@@ -3,9 +3,9 @@ html
     head
         meta(charset='UTF-8')
         meta(name='viewport' content='width=device-width, initial-scale=1.0')
-        title Document
+        title #{pageTitle}
         link(rel='icon' href=`${prefixAdmin}/assets/img/kaiadmin/favicon.ico` type='image/x-icon')
-        // Fonts and icons
+
         script(src=`${prefixAdmin}/assets/js/plugin/webfont/webfont.min.js`)
         script.
             const prefixAdmin = "#{prefixAdmin}";
@@ -28,6 +28,7 @@ html
         link(rel='stylesheet' href=`${prefixAdmin}/assets/css/bootstrap.min.css`)
         link(rel='stylesheet' href=`${prefixAdmin}/assets/css/plugins.min.css`)
         link(rel='stylesheet' href=`${prefixAdmin}/assets/css/kaiadmin.min.css`)
+        link(rel='stylesheet' href=`${prefixAdmin}/assets/css/style.css`)
 
     body
         .wrapper.sidebar_minimize

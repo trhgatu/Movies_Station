@@ -1,0 +1,59 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-error(3000)
+    +alert-success(3000)
+    .page-inner
+        .page-header
+            h3.fw-bold.mb-3 Chi tiết phim
+            ul.breadcrumbs.mb-3
+                li.nav-home
+                    a(href=`${prefixAdmin}/`)
+                        i.icon-home
+                li.separator
+                         i.icon-arrow-right
+                li.nav-item
+                    a(href=`${prefixAdmin}/movies`) Phim
+                li.separator
+                        i.icon-arrow-right
+                li.nav-item
+                    a(href='#') #{movie.title}
+        .row
+            .col-md-12
+                .card
+                    .card-header
+                        .card-title #{movie.title}
+                    .card-body
+                        .row
+                            .col-md-4
+                                img.img-fluid(src=movie.thumbnail ? movie.thumbnail : "/path/to/default-thumbnail.jpg" alt=movie.title)
+                            .col-md-8
+                                h5 Thông tin phim
+                                table.table.table-striped
+                                    tbody
+                                        tr
+                                            th.text-nowrap Tiêu đề:
+                                            td #{movie.title}
+                                        tr
+                                            th.text-nowrap Mô tả:
+                                            td #{movie.description}
+                                        tr
+                                            th.text-nowrap Vị trí:
+                                            td #{movie.position}
+                                        tr
+                                            th.text-nowrap Trạng thái:
+                                            td
+                                                if(movie.status === "active")
+                                                    button(
+                                                        class="badge badge-success"
+                                                    ) Hoạt động
+                                                else
+                                                    button(
+                                                        class="badge badge-danger"
+                                                    ) Dừng hoạt động
+                                .form-group-btn
+                                    .form-group
+                                        a.btn.btn-primary(href=`${prefixAdmin}/movies/edit/${movie.id}`) Chỉnh sửa
+                                    .form-group
+                                        a.btn.btn-secondary(href=`${prefixAdmin}/movies`) Quay lại
