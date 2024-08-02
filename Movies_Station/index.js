@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 const port = process.env.PORT;
 
-app.set("views", "./views");
+app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
 //Flash
@@ -29,8 +29,10 @@ app.use(flash());
 //End Flash
 
 
+
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
-app.use(express.static("public"));
+
+app.use(express.static(`${__dirname}/public`));
 
 //Route
 routeAdmin(app);
