@@ -19,6 +19,6 @@ block main
                       .home-movies-item-link(href='#')
                         .home-movies-item__img(style=`background-image: url('${item.thumbnail}');`)
                         .home-movies-item__play-button
-                          a.home-movies-item__play-button-link(href='#')
+                          a.home-movies-item__play-button-link(href=`/movies/${item.slug}`)
                             i.home-movies-item__play-button-link-icon.fa-solid.fa-play
 

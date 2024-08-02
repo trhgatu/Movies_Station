@@ -95,8 +95,8 @@ module.exports.changeMulti = async (req, res) => {
             break;
         case 'change-position':
             for(const item of ids) {
-                let [id, position] = item.split('-')
-                position = parseInt(position)
+                let [id, position] = item.split('-');
+                position = parseInt(position);
                 await Movie.updateOne({ _id: id }, { position: position });
             }
             req.flash(

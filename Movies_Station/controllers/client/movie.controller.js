@@ -11,3 +11,16 @@ module.exports.index = async(req, res) => {
         movies : movies
     });
 }
+
+/* [GET] /movies/:slug */
+module.exports.detail = async(req, res) => {
+    const find = {
+        deleted: false,
+        slug: req.params.slug,
+    }
+    const movie = await Movie.findOne(find);
+    res.render("client/pages/movies/detail", {
+        pageTitle: "Danh sách phim",
+        movie : movie
+    });
+}
