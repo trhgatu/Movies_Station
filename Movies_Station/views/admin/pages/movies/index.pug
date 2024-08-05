@@ -4,6 +4,7 @@ include ../../mixins/search.pug
 include ../../mixins/pagination.pug
 include ../../mixins/form-change-multi.pug
 include ../../mixins/alert.pug
+include ../../mixins/sort.pug
 
 block main
     +alert-success("5000")
@@ -52,6 +53,13 @@ block main
                                     href=`${prefixAdmin}/movies/create`
                                     class="btn btn-outline-success"
                                 ) + Thêm mới
+                        .d-flex.align-items-center
+                            .col-2
+                                +sort()
+
+
+
+
 
                         table(
                             class="table mt-3"

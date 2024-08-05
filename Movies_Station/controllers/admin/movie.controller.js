@@ -37,8 +37,20 @@ module.exports.index = async (req, res) => {
     );
     //End pagination
 
+
+    //Sort
+    let sort = {};
+
+    if(req.query.sortKey && req.query.sortValue){
+        sort[req.query.sortKey] = req.query.sortValue;
+    }else{
+        sort.position = "desc";
+    }
+
+    //End sort
+
     const movies = await Movie.find(find)
-        .sort({ position: 'descending' })
+        .sort(sort)
         .limit(objectPagination.limitItems)
         .skip(objectPagination.skip);
 
