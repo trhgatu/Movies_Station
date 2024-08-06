@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const path = require("path");
 var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
 var flash = require('express-flash');
@@ -15,7 +16,7 @@ const systemConfig = require("./config/system");
 
 const app = express();
 app.use(methodOverride('_method'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = process.env.PORT;
 
@@ -24,10 +25,15 @@ app.set("view engine", "pug");
 
 //Flash
 app.use(cookieParser("ASDHIASHDJAS"));
-app.use(session({cookie: {maxAge: 60000}}));
+app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 //End Flash
 
+//TinyMCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+
+
+//End TinyMCE
 
 
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
