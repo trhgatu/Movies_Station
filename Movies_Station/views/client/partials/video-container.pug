@@ -1,0 +1,19 @@
+.video-container
+    .video-container__infor
+        .video-container__infor-logo
+            img.video-container__infor-logo-img(src='/img/logo_red.png')
+        .video-container__infor-desc
+            p.video-container__infor-desc-text
+                | Khi còn nhỏ, Uta cựu nhạc sĩ của băng Hải Tặc Tóc
+                | Dù và là bạn thời thơ ấu của Monkey D. Luffy đã hứa rằng cô sẽ xây dựng một kĩ nguyên tự do
+                | mới
+                | bằng cách biểu diễn âm nhạc vui tươi cho thế giới.
+        .video-container__infor-action
+            .video-container__infor-action-btn-link
+                button.video-container__infor-action-btn-link.video-container__infor-action-btn-link--play
+                    i.video-container__infor-action-btn-link-icon.fa-solid.fa-play
+                    | Phát
+.video-container__play
+    section.video-container__play-video-section
+        video.video-container__play-background-video(autoplay='' muted='' loop='')
+            source(src='/videos/One Piece Film Red - Official Trailer (2022) English Subtitles (1080p).mp4' type='video/mp4')

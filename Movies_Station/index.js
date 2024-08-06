@@ -3,10 +3,12 @@ const express = require('express');
 const path = require("path");
 var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
+const axios = require("axios");
 var flash = require('express-flash');
 var cookieParser = require("cookie-parser");
 var session = require('express-session');
 const database = require("./config/database");
+const cors = require('cors');
 
 database.connect();
 
@@ -37,12 +39,13 @@ app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce
 
 
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
-
+app.use(cors());
 app.use(express.static(`${__dirname}/public`));
 
 //Route
 routeAdmin(app);
 route(app);
+
 
 
 app.listen(port, () => {
