@@ -7,23 +7,10 @@ module.exports.index = async (req, res) => {
     let find = {
         deleted: false,
     }
-    function createTree(arr, parentId = ""){
-        const tree = [];
-        arr.forEach((item) =>{
-            if(item.parent_id === parentId){
-                const newItem = item;
-                const children = createTree(arr, item.id);
-                if(children.length > 0){
-                    newItem.children = children;
-                }
-                tree.push(newItem);
-            }
-        });
-        return tree;
-    }
+
 
     const records = await MovieCategory.find(find);
-    const newRecords = createTree(records);
+    const newRecords = createTreeHelper.tree(records);
     res.render('admin/pages/movies-category/index', {
         pageTitle: 'Danh mục phim',
         records : newRecords
