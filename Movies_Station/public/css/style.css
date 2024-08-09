@@ -345,9 +345,31 @@
 
 .movies__container-section{
     padding-top: 40px;
+    opacity: 0.5;
 }
-
-
+.movies__detail-container{
+    padding-top: 70px;
+    padding-top: 70px;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--black-color);
+}
+.movies__detail-title{
+    color: var(--white-color);
+    font-size: 2rem;
+}
+.movie__detail-infor-list{
+    list-style: none;
+}
+.movie__detail-infor-item{
+    font-size: 1.6rem;
+    color: var(--white-color);
+}
+.movie__detail-content{
+    display: flex;
+    justify-content: space-around;
+    padding: 35px;
+}
 /* Footer */
 .footer__container{
     background-color: var(--footer-color);

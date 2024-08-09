@@ -1,67 +1,9 @@
 extends ../../layouts/default.pug
 
+include ../../mixins/movie-section.pug
+
 block main
     include ../../partials/video-container.pug
-    .video-container__play
-        section.video-container__play-video-section
-            video.video-container__play-background-video(autoplay='' muted='' loop='')
-                source(src='/videos/One Piece Film Red - Official Trailer (2022) English Subtitles (1080p).mp4' type='video/mp4')
-    .movies__container
-        .grid
-            .movies__container-section
-                .movies__container-title
-                    span.movies__container-title-text Phim mới cập nhật
-                    span.movies__container-title-see-all
-                        a.movies__container-title-see-all-link(href='')
-                            | Xem tất cả
-            .grid__row.movies__content
-                .grid__column-12
-                    .home-movies
-                        .movies__carousel
-                            each item in newMovies
-                                .grid__column-2-4
-                                    .home-movies-item
-                                        .home-movies-item-link(href=`/movies/${item.slug}`)
-                                            .home-movies-item__img(style=`background-image: url('${pathImages}${item.thumb_url}');`)
-                                            .home-movies-item__play-button
-                                                a.home-movies-item__play-button-link(href=`/movies/${item.slug}`)
-                                                    i.home-movies-item__play-button-link-icon.fa-solid.fa-play
-
-        .grid
-            .movies__container-section
-                .movies__container-title
-                    span.movies__container-title-text Phim mới cập nhật
-                    span.movies__container-title-see-all
-                        a.movies__container-title-see-all-link(href='')
-                            | Xem tất cả
-            .grid__row.movies__content
-                .grid__column-12
-                    .home-movies
-                        .movies__carousel
-                            each item in singleMovies
-                                .grid__column-2-4
-                                    .home-movies-item
-                                        .home-movies-item-link(href=`/movies/${item.slug}`)
-                                            .home-movies-item__img(style=`background-image: url('${pathImages}${item.thumb_url}');`)
-                                            .home-movies-item__play-button
-                                                a.home-movies-item__play-button-link(href=`/movies/${item.slug}`)
-                                                    i.home-movies-item__play-button-link-icon.fa-solid.fa-play
-        .grid
-            .movies__container-section
-                .movies__container-title
-                    span.movies__container-title-text Phim mới cập nhật
-                    span.movies__container-title-see-all
-                        a.movies__container-title-see-all-link(href='')
-                            | Xem tất cả
-            .grid__row.movies__content
-                .grid__column-12
-                    .home-movies
-                        .movies__carousel
-                            each item in seriesMovies
-                                .grid__column-2-4
-                                    .home-movies-item
-                                        .home-movies-item-link(href=`/movies/${item.slug}`)
-                                            .home-movies-item__img(style=`background-image: url('${pathImages}${item.thumb_url}');`)
-                                            .home-movies-item__play-button
-                                                a.home-movies-item__play-button-link(href=`/movies/${item.slug}`)
-                                                    i.home-movies-item__play-button-link-icon.fa-solid.fa-play
+    +movieSection('Phim mới cập nhật', newMovies, pathImages, '/movies/new-movies')
+    +movieSection('Phim lẻ', singleMovies, pathImages, '/movies/single-movies')
+    +movieSection('Phim bộ', seriesMovies, pathImages, '/movies/series-movies')

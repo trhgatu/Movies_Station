@@ -1,0 +1,21 @@
+mixin movieSection(title, movies, pathImages, seeAllLink)
+    .movies__container
+        .grid
+            .movies__container-section
+                .movies__container-title
+                    span.movies__container-title-text= title
+                    span.movies__container-title-see-all
+                        a.movies__container-title-see-all-link(href=seeAllLink) Xem tất cả
+            .grid__row.movies__content
+                .grid__column-12
+                    .home-movies
+                        .movies__carousel
+                            each item in movies
+                                .grid__column-2-4
+                                    .home-movies-item
+                                        .home-movies-item-link(href=`/movies/${item.slug}`)
+                                            .home-movies-item__img(style=`background-image: url('${pathImages}${item.thumb_url}');`)
+                                            .home-movies-item__play-button
+                                                a.home-movies-item__play-button-link(href=`/movies/${item.slug}`)
+                                                    i.home-movies-item__play-button-link-icon.fa-solid.fa-play
+

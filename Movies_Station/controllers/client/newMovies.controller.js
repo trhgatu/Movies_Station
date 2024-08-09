@@ -1,5 +1,19 @@
 const axios = require('axios');
 
+/* [GET] /new-movies */
+module.exports.index = async (req, res) => {
+    res.send("OK");
+}
+
+
+
+
+
+
+
+
+
+
 module.exports.getMovies = async () => {
     try {
         const response = await axios.get('https://apii.online/apii/danh-sach/phim-moi-cap-nhat');

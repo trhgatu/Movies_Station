@@ -1,23 +1,20 @@
 extends ../../layouts/default.pug
 
 block main
-    .page-inner
-        .row
-            .col-md-12
-                .card
-                    .card-header
-                        .card-title #{movie.title}
-                    .card-body
-                        .row
-                            .col-md-4
-                                img.img-fluid(src=movie.thumbnail ? movie.thumbnail : "/path/to/default-thumbnail.jpg" alt=movie.title)
-                            .col-md-8
-                                h5 Thông tin phim
-                                table.table.table-striped
-                                    tbody
-                                        tr
-                                            th.text-nowrap Tiêu đề:
-                                            td #{movie.title}
-                                        tr
-                                            th.text-nowrap Mô tả:
-                                            td #{movie.description}
+    .movies__detail-container
+        .grid
+            div(class="movies__detail-section")
+                div(class="movie__detail-content")
+                    div(class="movie__detail-content-left")
+                        div(class="movies__detail-title")
+                            span(class="movies__detail-title-text")
+                                | #{movie.name}
+                        div(class="movie__detail-infor")
+                            ul(class="movie__detail-infor-list")
+                                li(class="movie__detail-infor-item") Năm sản xuất: #{movie.year}
+                                li(class="movie__detail-infor-item") Thể loại:
+                                    each cate in movie.category
+                                        span.movies__detail-category= cate.name
+                    div(class="movie__detail-content-right")
+                        img(src=`${movie.thumb_url}`)
+
